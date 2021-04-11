@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Walkthrough - OverTheWire natas 10 - 14
+related_posts:
+  - blog/_posts/2019-03-18-overthewire-natas-10-14.md
 description: >
   A walkthrough of OverTheWire natas 10 - 14 with tool recommendations,
   recommendations for further reading, recommendations for protecting your server
@@ -8,7 +10,8 @@ description: >
   giving you a very gentle introduction to this wargame.
 ---
 # OverTheWire natas 10 - 14
-[Read Previous - OverTheWire level 5-9 walkthrough.](2019-03-17-overthewire-natas-5-9.md)
+* this unordered seed list will be replaced by toc as unordered list
+{:toc}
 ## Introduction
 [OverTheWire](http://overthewire.org) is a wargame site with several challenges.
 It contains several challenges with a nice increase in
@@ -28,6 +31,7 @@ We are on this level met with yet another search, with a hint that they filter c
 This time also they have been kind enough to give us the server source code.
 ![Natas 10 landing page](/assets/img/blog/natas/overthewire-natas-10-1.png)
 ~~~php
+// file: "index.php"
 For security reasons, we now filter on certain characters<br/><br/>
 <form>
 Find words containing: <input name=needle><input type=submit name=submit value=Search><br><br>
@@ -57,7 +61,10 @@ Passthru is still used, as in natas9, and they filter against these characters: 
 Well, we could just grep for an empty string in any file, and we will get the entire file. 
 Thus a search for `"" /etc/natas_webpass/natas11 #` that contains no illegal characters will give us the password
 for natas11.  
-_whitelist, not blacklist_
+
+
+whitelist, not blacklist
+{:.note}
 <details>
   <summary>Spoiler</summary>
   natas11: U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK
@@ -68,6 +75,7 @@ We are met with a hint "Cookies are protected with [XOR encryption](https://en.w
 If we change the color, the background of that page changes the color. 
 ![Natas 11 landing page](/assets/img/blog/natas/natas11-1.png)
 ~~~php
+// file: "index.php"
 <?
 
 $defaultdata = array( "showpassword"=>"no", "bgcolor"=>"#ffffff");
@@ -151,6 +159,7 @@ We can use that last rule as our attack, as we know the plaintext, and we know t
 When we successfully have retrieved the key, its trivial the encrypt a new cookie, request the page and retrieve the password.
 I will do this programmatically with python, comments in the code explain what I do.
 ~~~python
+# file: "exploit.py"
 import requests
 import urllib.parse
 import base64
@@ -180,7 +189,10 @@ i1 = result.index('The password for natas12 is ')
 i2 = result.index('<br>', i1)
 print(result[i1:i2])
 ~~~
-_Don't use XOR for encryption. Ever._
+
+
+Don't use XOR for encryption. Ever.
+{:.note}
 <details>
   <summary>Spoiler</summary>
   natas12: EDXp0pS26wLKHZy1rDBPUZk0RKfLGIR3
@@ -190,6 +202,7 @@ _Don't use XOR for encryption. Ever._
 ![Natas 12 landing page](/assets/img/blog/natas/natas12-1.png)
 We are met with an image upload code, and yet again, source code.
 ~~~php
+// file: "index.php"
 <? 
 
 function genRandomString() {
@@ -277,7 +290,10 @@ Resulting in `File uploaded successfully` and a link to the file. Now its just a
 Retrieve the password for the next level by opening the url [view-source:http://natas12.natas.labs.overthewire.org/upload/p4kd1uhtkk.php?test=cat%20/etc/natas_webpass/natas13](view-source:http://natas12.natas.labs.overthewire.org/upload/p4kd1uhtkk.php?test=cat%20/etc/natas_webpass/natas13)
 ![natas12-2.png].
 Read more on this vulnerability (Unrestricted file upload) on [OWASP](https://www.owasp.org/index.php/Unrestricted_File_Upload).
-_Make sure to restrict file upload_
+
+
+Make sure to restrict file upload
+{:.note}
 <details>
   <summary>Spoiler</summary>
   natas13: jmLTY0qiPZBbaKc9341cqPQZBJv7MQbY
@@ -287,6 +303,7 @@ _Make sure to restrict file upload_
 ![Natas 13 landing page](/assets/img/blog/natas/natas13-1.png)
 We are met with an image upload code again, this time with restrictions, and yet again, source code.
 ~~~php
+// file: "index.php"
 For security reasons, we now only accept image files!<br/><br/>
 
 <? 
@@ -386,7 +403,10 @@ GIF89a
 Resulting in `File uploaded successfully` and a link to the file. Now its just a matter of opening the url, view source, 
 (to make output easier to read), and you have a poor mans browser shell to the server, just as natas12
 Retrieve the password for the next level by opening the url [view-source:http://natas13.natas.labs.overthewire.org/upload/7eifk4vmf9.php?test=cat%20/etc/natas_webpass/natas14](view-source:http://natas13.natas.labs.overthewire.org/upload/7eifk4vmf9.php?test=cat%20/etc/natas_webpass/natas14)
-_Checking file type is not enough_
+
+
+Checking file type is not enough
+{:.note}
 <details>
   <summary>Spoiler</summary>
   natas14: Lg96M10TdfaPyVBkJdjymbllQ5L6qdl1
@@ -396,6 +416,7 @@ _Checking file type is not enough_
 ![Natas 14 landing page](/assets/img/blog/natas/natas14-1.png)
 We are met with a username/password login page, and sourcecode.
 ~~~php
+// file: "index.php"
 <?
 if(array_key_exists("username", $_REQUEST)) {
     $link = mysql_connect('localhost', 'natas14', '<censored>');
@@ -427,7 +448,10 @@ The query checks the username and password, and if it finds a result, we get the
 Otherwise we are denied.
 The glaring error on this page is [SQL injection](https://www.owasp.org/index.php/SQL_Injection).
 Use username `" OR 1=1 -- -` for instant win.  
-_SQL injection flaws are more common than you think_
+
+
+SQL injection flaws are more common than you think
+{:.note}
 <details>
   <summary>Spoiler</summary>
   natas15: AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J

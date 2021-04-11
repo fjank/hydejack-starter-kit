@@ -24,7 +24,6 @@ men så raskt at jeg ikke hadde nok erfaring, for det var alltid noen som hadde 
 tid enn meg, så jeg sluttet raskt med å løse oppgaver på natten. Jeg var fornøyd hvis jeg fikk løst alle oppgavene.
 
 Python koden er kun testet at fungerer, den er ikke ryddet opp i, så den er ikke akkurat optimal. 🤪  
-La oss hoppe i det!
 
 ## Luke 1
 ###  Velkommen til NPST (10)
@@ -43,6 +42,7 @@ La oss hoppe i det!
     
     Brukernavn: bruker
     Passord: Advent2019
+
 
 Første oppgave er å lage seg en bruker i CTF løsningen som brukes, deretter får man oppgitt brukernavn og passord til 
 [https://login.npst.no](https://login.npst.no). Dette gir deg flagget.  
@@ -64,7 +64,8 @@ Første oppgave er å lage seg en bruker i CTF løsningen som brukes, deretter f
     
     Nytt passord: 
 
-> Flagg: PST{a7966bf58e23583c9a5a4059383ff850}
+Flagg: PST{a7966bf58e23583c9a5a4059383ff850}
+{:.note}
 
 ### Velg passord (15)
     Gratulerer!    
@@ -82,15 +83,9 @@ Det ser her ut til at det er regler som må følges, etter litt prøving og feil
     Summen av ASCII-verdier modulo 128 må være lik 24.
 
 Et lite python program er en løsning or å finne et nytt gyldig passord, 
-Det første og beste passordet `0@Ag` gir oss flagg 2.
-
-    Passordet kunne ikke bli endret på nåværende tidspunkt.
-    Prøv igjen på nyåret!
-    
-    PST{6a0f0731d84afa4082031e3a72354991}
-> Flagg: PST{6a0f0731d84afa4082031e3a72354991}
 
 ~~~python
+# file: "findpw.py"
 import string
 pw = ''
 
@@ -150,6 +145,16 @@ for c in string.printable:
                 print(pw)
 ~~~
 
+Det første og beste passordet `0@Ag` gir oss flagg 2.
+
+    Passordet kunne ikke bli endret på nåværende tidspunkt.
+    Prøv igjen på nyåret!
+    
+    PST{6a0f0731d84afa4082031e3a72354991}
+
+Flagg: PST{6a0f0731d84afa4082031e3a72354991}
+{:.note}
+
 ### Passordgjenoppretting (20)
     En tidligere ansatt måtte slutte etter å ha endt opp på listen over slemme barn. 
     Dessverre glemte vi å be han kopiere ut filene sine før han sluttet, og vi har følgelig ikke passordet.  
@@ -184,8 +189,9 @@ Løsning.txt inneholder flagget vi er på jakt etter:
     ╚═╝     ╚══════╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝                                                 
     PST{36044221cd3e991ffc56eb2f1e368ca0}
 
-**Flagg: PST{36044221cd3e991ffc56eb2f1e368ca0}**
 
+Flagg: PST{36044221cd3e991ffc56eb2f1e368ca0}
+{:.note}
 notater.jpg er et bilde av en pult med en datamaskin, en kopp, en grøtskål 
 og en gul lapp med informasjon `IV PS ⚙️` det skal vise seg at vi får bruk for senere.
 
@@ -230,7 +236,9 @@ Ingen oppgaver denne dagen.
 Penn og papir kryptering er høyst sannsynlig en enkel krypteringsmåte, [cyberchef](https://gchq.github.io/CyberChef/) er mitt goto tool for exploration.
 Her viser det seg å være en veldig enkel [Caesar cipher](https://en.wikipedia.org/wiki/Caesar_cipher): ROT5. 
 Cyberchef har ikke støtte for æøå, men det er raskt å manuelt ta de bokstavene som havner i det området.  
-**Flagg: PST{30e6d8432ce54710f9c09f305e7b9829}**
+
+Flagg: PST{30e6d8432ce54710f9c09f305e7b9829}
+{:.note}
 
 ## Luke 4
     Ønskelister på avveie
@@ -309,10 +317,12 @@ Etter kort tid finner jeg flagget på bl.a. command `⚡⚡⚡⚡✨🔑`
 }
 ~~~
 
-**Flagg: PST{ba323c3f5b3f1b536461d41cc7f1ba60}**
+Flagg: PST{ba323c3f5b3f1b536461d41cc7f1ba60}
+{:.note}
 
-Kode:
+
 ~~~python
+# file: "brute-flag.py"
 # -*- coding: utf-8 -*-
 import requests, codecs, sys
 UTF8Writer = codecs.getwriter('utf8')
@@ -360,10 +370,11 @@ så kommer løsningen av seg selv: `PST krø11p4r3n735 b54daeb4ca23fea6e2c3fd7e7
 Det var forøvring ikke mulig å løse denne til å begynne med, iom at det faktisk var en feil i hashen som var lagt ut. 
 Alikevel var det noen som hadde løst den, se en fantastisk forklaring på hvordan [her](https://github.com/myrdyr/ctf-writeups/tree/master/npst).
 
-**Flagg: PST{b54daeb4ca23fea6e2c3fd7e7094ef1f}**
+Flagg: PST{b54daeb4ca23fea6e2c3fd7e7094ef1f}
+{:.note}
 
-Kode:
 ~~~python
+# file: "solver.py"
 destriptio2 = 'Ny pr053dyr3 f0r kryp73ring\
 NI553N h4r få77 på p1455 ny PPK. K4n ni553n3 hj31p3r3 v3rifi53r3 4t k0d3n 3r ukn3kk31ig?'
 
@@ -466,10 +477,13 @@ På juleverkstedet finner vi en sinnsvak liste av bilder. Etter litt analysering
 bilder, det er en liste av ca 2340 bilder. Isteden for å lete etter det ene bildet av et flagg, så skriver jeg et program
 som henter ut alle bilder det er kun ett av. Nedlasting av bilder gjør jeg enkelt og greit med firefox, "save as".
 Når jeg nå har en liste med 3 bilder, er det enkelt. En sko, en pingvin og ett flagg. Flagget er løsningen.  
-**Flagg: PST{8798e1f0a271b09750a6531686fc621b}**
+
+Flagg: PST{8798e1f0a271b09750a6531686fc621b}
+{:.note}
 
 Kode:
 ~~~python
+# file: "solver.py"
 # get the filenames
 import hashlib
 from os import listdir
@@ -499,7 +513,9 @@ for count in counts:
     Kan du ta en ny titt og se om du finner noe muffens?
 
 Tjah, kan jo være den teite pingvinen? Pingviner hører jo ikke til på Nordpolen. Jupp, det var det.  
-**Flagg: PST{b30b4add25b97721ebf0e7ad2eb26eb9}**
+
+Flagg: PST{b30b4add25b97721ebf0e7ad2eb26eb9}
+{:.note}
 
 ## Luke 8
 ### 8. desember (10)
@@ -524,7 +540,9 @@ Etter en liten bomtur innom [steganografi](https://en.wikipedia.org/wiki/Stegano
 [strava](https://www.strava.com/) siden det ser ut til at julenissen bruker strava.
 Joda, både Rudolf Rødnese og Jule Nissen er på Strava, og de logger turene sine public. på den 4 desember ser det et til 
 at rudolf faktisk tok en omvei via North Pole Expedition Museum (Google Maps). Det er faktisk en isbjørn foran der...  
-**Flagg: PST{NORTH POLE EXPEDITION MUSEUM}**
+
+Flagg: PST{NORTH POLE EXPEDITION MUSEUM}
+{:.note}
 
 ### Spionaktivitet (15)
     Det har kommet tips om mulig spionaktivitet utført av sørpolare agenter på 
@@ -534,7 +552,9 @@ at rudolf faktisk tok en omvei via North Pole Expedition Museum (Google Maps). D
 Ved å bruke strava flyby, så kan vi se enda en teit pingvin (Pen Gwyn), som var ute på tur, fulgte etter Rudolf og Nissen
 hele tiden.
 På hans profil finner vi flagget.  
-**PST{69d26031ea5dbbeb56f22d9647f7c98e}**
+
+PST{69d26031ea5dbbeb56f22d9647f7c98e}
+{:.note}
 
 ### Mystiske profiler (20)
     Våre analytikere mistenker at Pen Gwyn har rapportert hjem til sine kontakter på sydpolen.
@@ -548,8 +568,9 @@ Når jeg endelig fikk det korrekte bildet var det en annen sak.
 Alt jeg har tilgjengelig av [stego-tools](https://github.com/DominicBreuker/stego-toolkit) ga meg nada.
 Bakgrunnen i dette bildet har streker i forskjellig tykkelse. Med litt analyse kan man se at det er [morsekode](https://en.wikipedia.org/wiki/Morse_code),
 en manuell dekoding av morse gir oss siste flagg.  
-**PST{e06531d19ff020a479520ef28c8d12c}**
 
+PST{e06531d19ff020a479520ef28c8d12c}
+{:.note}
 Profil bildet til Pen Gwyn inneholder også en gul lapp med informasjon `VII TF ⚙️`.
 ## Luke 9
     Ønskelistelekkasje
@@ -594,8 +615,9 @@ Siden vi vet teksten over skal være `PST KRØLLPARANTES` kan vi begynne med å 
 Kjører man viegnere decoding med resultatet, får man nøkkelen.
 De tre første bokstavene er `SPS`, educated guess gir oss nøkkelen `SPST` (kan også bruteforce hvis man vil).  
 [Her er Cyberchef linken til løsningen](https://gchq.github.io/CyberChef/#recipe=Vigen%C3%A8re_Decode('SPST')&input=SEhMIERKRFdFREVTS1dDTFhLIHUwMnMxMDR5MnM2NjV0NXYzdzI2MTl2NjE4NHN1NTB0IENHR1hEQUhUSlRGTVdIIEtFTUlM).  
-**Flagg: PST{f02a104f2a665e5d3d2619d6184dc50a}**
 
+Flagg: PST{f02a104f2a665e5d3d2619d6184dc50a}
+{:.note}
 ## Luke 11 - 1337 (5)
     Primære faktorer
     En av NPSTs primære oppgaver er å overvåke kommunikasjonen mellom personer 
@@ -628,8 +650,9 @@ riktig linebreak.
      █     ██    █      █  █████ ███ █   █ █████ ████  █   █ █████ █   █ █   █ █████ █   █   █████   █   █ █████ █████ █████   █    ███   ███  █████ █   █ █   █ █   █ █████ █████ █   █   █  █    
 
 
-Kode:
+
 ~~~python
+# file: "solver.py"
 binStr = '0111000110011111000010010000011101000101111101111001111001111100010001000100000001011111000000011111010100000⏎
          10000000000010001001110010001000000010001000100010001011111000000010111110100100000100101001000100000100010000⏎
          00100110010100000100010100010100000010100100100000000100010000000000010001010000010000000000010001010001010001⏎
@@ -688,10 +711,13 @@ Så kaller vi decrypt med passordet, saltet og det krypterte flagget. Voila!
 ~~~
 https://api.spst.no//eval?eval=`<pre>${decrypt('passord-61','NaHSO4',getFlag())}</pre>`
 ~~~
-**Flagg: PST{24e592de8b20fe09938916d79b08854e}**
 
-Kode:
-~~~nodejs
+Flagg: PST{24e592de8b20fe09938916d79b08854e}
+{:.note}
+
+
+~~~js
+// file: "code.js"
 function getFlag() {
   // Det er sikkert smartere å kryptere flagget først, og bare skrive inn det
   // krypterte resultatet her, enn å kryptere på serveren hver gang.
@@ -777,7 +803,8 @@ function getSecretPasswordNumber(n) {
     NISSEN vil også oppfordre alle ansatte til å beskytte informasjon bedre ved bruk av kryptering. 
     Sørg også for å bruke gode passord.
     
-> PS min kode for denne oppgave er på en annen maskin, derfor har jeg ikke inkludert koden jeg faktisk brukte på denne.
+min kode for denne oppgave er på en annen maskin, derfor har jeg ikke inkludert koden jeg faktisk brukte på denne.
+{:.note}
 
 Aller først må vi finne nøkkelen for å dekryptere [7zip](https://www.7-zip.org/) arkivet. 
 Her hintes det til en teknologi som er nevnt i en finn annonse for PST.
@@ -793,8 +820,9 @@ access-pattern mønster, IP adressene er interne, så man kan ikke se om en av d
 ved å hente ut alle tokens for en dag, og lagre de i en liste, og så kjøre EXCEPT/minus for alle dager i alle kombinasjoner,
 så kan man se at det er en dag som peker seg ut med at det er et extra token den dagen. Dette viste seg å
 være Pen Gwyn (pingvinjævel) igjen.  
-**Flagg: PST{67e49727affdee991ec58180ee657b28}**
 
+Flagg: PST{67e49727affdee991ec58180ee657b28}
+{:.note}
 ## Luke 14 - Lekket data (5)
     Ukens ansatt
     Jule NISSEN gratulerer joey som ukens ansatt, og takker for at han har skapt et fantastisk arbeidsmiljø 
@@ -854,8 +882,9 @@ Lagre strengen som en tekstfil `melding.b64`, deretter converter til bytes i bas
 Ser ut til at vi har fått en delvis match, teksten var ikke helt korrekt. enkelt å gjette seg fram til den korrekte 
 nøkkelen `JulenErTeit`, og vi finner flagget.
 [Cyberchef oppskrift](https://gchq.github.io/CyberChef/#recipe=From_Base64('A-Za-z0-9%2B/%3D',false)XOR(%7B'option':'UTF8','string':'JulenErTeit'%7D,'Standard',false)&input=R1NVL01XUjBRWHBVVzFwN1RHWnZJVFVYSmdRYUhpVWJDUmRPTnhjZ0VRd0FhaGdERVU0TElnY3hZeWNsR0V3T0R5c0JQdzhNVkNjVUFnSUxaUm94RjBrZGFpWThOanBsR2pVWFNSS3ZBUmhGQXlBV2RCWU1FMm9HaVVVR0pBQjBOamtuSGxVS0Nod2dCalVSSFZRbEJRa1hEellZT3dzTUJtb0ZpVVVnS2dBd0ZRWVlLd2NmRGd0bEJqRVhHeDArR2g0TUd5aFNQVVVORVNSVkh3d2RNUmQwRVFBUUx4dENSVHNyRmpFWFNSS3lHUXNBSEdVWE9rVUdCRG9HR1FnRElBQTlDdzVVS3dOTUFRYzJBVEZGQmdRdkJ3MFdCQ29jTVFzTVdrQTVDUUVMTnhjNlJRZ0NhanM4TmpwcFVoNFFCUkZxT3dVV0hTQWNlRVVCRVRnUUdCRUxOMUk3Q0IwVkpnRk1GZ0VvVWg4cEtDRVpWUVFFSEdVRXNoY2RWQ1VYQmdBRk1WSXlDaHRVTEJrSkZ3dGxFeUpGRFIwNUJnbEZBVFVYSmdRYUhpVWJDUXNMYTNoZVNFa2dJd2NmQVE4aVVtUldSMFY0VzExY1RpNGVOUmNkRVdvRGlSY0xaUll0RGgwZExSQk1EUThtR1RFWERGU3ZWUWdBQlRjTEpCRU1CaTlWbEFzZExoYzREQm9BTHdkTUZnRW9VaUlFRzFRNUVBSUJHbVVHUFFsSlB3WTBPVFpBWlNROVJRTWJLQmNKRjA0akhTWVJHaFUrQVV3TkR6Y1dJRVVFRVM1VmlVVVBLeE00SEJvUk9CQk1EQUFyR2pzSkRSRStWUVZGQ2l3Qkp3QkpqQ1FHQndBQ0xBRWdBQWNSWkg5QlJTRXJBVEFFRGxSNlFVSlVYR3REYlVVUEd6Z1FHQW9GWlJjNlJRZ1RMeHNZUlFzeFVpSUFCUmd6SGdjQUdtVUJKQVFISFNRU0h3b2VOUlltQkE1VUp4b1lSU1VKTXdFMlJWUW1FQWdBSENBY2RBUWZWQVFsUHpGQVpUa1lKRHduYWdNTkYwNHdCakZGR1pGcUh3TUNDU0FHSVJkSkFDTVpUQlVCTmdZL0NnY0FKUWNKRVU0b0Z6QkZEQnBxRkJwRkJpUWNKMFViRVNNYkh3RVhOMXgwSUIwQUx3ZE1CQUl4VXJGRkRZd25HQWxGSGFCU05nQUhEVDRCQ1JaT05SMG5FUUliSkFFREZ3c3hVaklLRzFTdlZSOEFBQ0VYZEowSEJ5RVFBQXdkTVJjbVJROEdLMVZPRmdBc0hqZ0FTMVFvRkI0TFFHVTJNUkZKQWlNSEJ3QWNaUUU3Q0VrYkoxVWlOVDBSVWowT0FoRnFIUTBYVGlzZE1RdEpGU1FRQUJZTFpSMDVSUWdBYWhFSkVSb2dVaklLR3hFdGtCNUZIcUJTTUFBYkVUbFZHQUFjTnhzZ0Noc2RMMXRtU0U0REFERUJDQk5xUlZwTFgzZGNaVnhKQjY5Vkh3NEhJd1l4RVVrNkdpWTRSUm9zSG5RQUIxUWtERXdPSER3Q0lBQWJIU1FTSHdRQ0loMG1EQjBaTDFVZkNnTmxGVDRLR3hBdlZRMFJUak1iZEF3Q0h5OVZBQUFBSWhjbVJRK1JPRlVZREFJaUV6b0NTUUFqR1V3TUFDc2FPd2tORVQ1VkJVV1dLd0UvQUFVZE9RRUpDd3RyVWdLQUd4RnFIUTBHQlNBQU1VVURHeWdYQ1JkT05aZDBGaGtHTHhzTFJRZ3FBSFNBU1JJakd3SUFUaUFjZEJNTUhXb0hHUXNLTVZJd0FBY2FMMVVDSEF0bEdTWWNHUUF2QndVTENTQWNlbTlFVkFhTkhnRVBJbEprVWtkRmVGdGRYRTRzSERJTUJRQTRFQjRSQzJVWE9rVUlFeThiR0VVbENUTUJOa2tISXdFWVJSZ2dBRDhXSFJFdVZRTUNUamNkSUFBZFZDd2FIa1dMWlFFMUJ3WUFMd2NKUlFRd0hqRURCZ1lvRUI0QUNpQWVKd0FIRVdaVkFRQUFaUVF4RndJSFBoQUlBQnBsQkRVWFNSVW1HUWtYQ3lFWGRCTU1HQzRjQzBVY0tnWXhFUXhhYWpNREZ3YWdBakVMSFJnakVob01IV1VVT3hjYUhTUWVDUmRPSVJjZ0VReFVMQm9lQndzM0Z6QUFCUWN2R3dsRkFDb1pkQkVBR0dvVUdFVU1JQlE3Q1FJYUl4c0xBQUJsRURnTUcxUS9CZ1VPQlNBQWRCV01WQ1VZVEFFTE1WSTJDUUFHYWhBQ1JRa3FGblFQSEJoa2YwRkZPaXdBSndFSUUycEVYRXRmZDF4bFhFa1lMd01KRnhvZ1VqRUxTUlV0RUFJUlRpQUdkQlVJQmo0Y1RBOGJLUmMyRnh3SGFnRUZDVTRnSEhRVkJnQXZHeDhNQ3lrZWRBNEFHQzRRVEF4T0N5SUhNVWRVRGhBWUVRdGxFRGdBU1JNZ0doNFJUaUFHSUFBYlZDc0JUQk9MTjFJZ0RBMFlJeElKRnd0bEdUMEpEUkZxQllsRkJ5c2NKd3dORVNSVkNnd0ZMbEluRlFnR0lSQUNSUXN4QmpFWFNSVStWUVFFQUdVUU9BQkpHem9GQ0FRSklBWjZSVDhkYWhBZVJSczJHejhYREZRNmtFd0tBMlVCT1owYkhTUVNId01CTndHc0Rnd0FhaDBORjA0akJ6b0NEQVkrVlFrUkdpQUFKd29FVkNzWkdnQUFaUUV4RjBrQlBsVVlEQUpsbDNRTkNGUW5FQUFCR21VV01SRWRFV29jQWhFTE54d2dTMk5aYWlFREZ4MGhFek5GV0Vaa1JGNUxYM3hTSndzSUJEb1FHRVVZTEZJN0ZSbFVMeHRNQ0FzcEZqMExEbFFsR0V3RUdtVTVHQ1E4SjJvZERSZE9KeDQ5RVIxVU9Rd0hTMDRESFNZTmpBUXZHeGdKQnlJRVBSWkpBaU1aVEFFTE1RWXhSUXNSUGd4TUJCcGxCREVYQWdjK0VBZ0FHbVVHUFFsSlB3WTBPVFpPTFJNaUN3d0dhaEFDQVE5bEhqRUxEZ1l2VlE0RUJXVUNzVVVQR3pnWENSY0xJUmM0Rmd3YUwxVWZEQUFnVWlBTUJWUWdBQUJMWkU5NEVBUWRGU3NiQ3hjTE5WSTVDaDFVR1NVL01XUVdCanNYRFJVK0ZBRUVIUzRiT2dBSFZEeVFIa1VHSkFCMEJ3VWRQZ0ZNRUJvMkV5QVJTUklsQjB3QUdtVVdOUkVJRlNRU0hnQWVaUnQwQ3dnQVBsVWZDZ05sQVRFWFNRRStWUmdNQW1XWGRCWWRGU2NZQ1VVSU54TjBBQWRVTFFjWkZSNGdVaklYQUFJakdRQU1DU0JTSndvRVZDQWFEZ2NMTjFJeUNodFVCQ1UvTVVCbEpEMUZDeEU0VlEwSkFpQlNOUXNhRlQ0QkNVVWJLeHd6Z0VtUmFoY0pDeGN4QmpGRkdoRXRWUTBUVGpFWU1Rc01CejRRQWdCT0l3QTFSUm9BSlFjSUJCb2tIelVXQWgwa0VBSkZDRGNYT1VVZEhTWlZEUUVETEJ3OUZoMEdLd1lHQ2dBMkJqRUVCQkUrVlFRRUhHVVVzUkVkVkRrY0J4Y0xNVkk0blJvYUl4c0xBQUJyZUY1dlBCOHZHeDlGRHlzQk5SRWRmaG9RQWtVcE1nczZSUThiT0ZVWkVRTWdBRDhBSFZRL0d3Z0FIQ1lkSWdBYlZDc0hEZ0FISVZJNUNoMVVCQ1UvTVVCUGVGNHhDQjhoVlJnTUFtVVRPQWtNVkN3YUhrVWJNUjh4RndJUlBsVU5Gd3dnR3pCRkRSRWtWUjhNSFRFWGRCRUFFQzhiUW04OUx4Y3lSVG9rR1NGQVJTVWdHeWNBR3dRakd3c1RCeXNYT205ak9naFBaaTRQS3dZOUN3d2FhZ01GQ1U0emxDWUFTUWMrRUFJQ0dtVVdNVVVIRVRrQkNVVWFLbEl3QkE0UkpCQk1BQm94RnlaRkFoZ3JFZ2tYVGpXWGRBR01CaVljQzBVRk14TTREQjBSUGxVY2dFNGpHeWNPREJwa1ZUb01UaWtYSUFBYlZDOEJHQUFjWlJjNlJRY05haGtKRXdzM0V6b0JrUVpxQmdNSVRpNFRPa1VGRVR3UUhnQk9KeGN3Rnd4VU9KQWFCQndnQUhwdk9TY2VEZzFXVjNkTFlsVmRSbnRNWFZaZmMwZGxYRjVNZmtBS1Zsb25GR0VCV0JWeUNBPT0)  
-**Flagg: PST{a392960421913165197845f34bf5d1a8}**
 
+Flagg: PST{a392960421913165197845f34bf5d1a8}
+{:.note}
 Kode:
 ~~~bash
 $ cat melding.b64 | base64 -d > melding.bin
@@ -936,7 +965,9 @@ $ cat WPSettings.dat
 Så, der har vi feriebildene, og de er passordbeskyttet. Det er alt som vises på disken, ikke no gøy i andre filer. 
 Da må passordet være skjult en plass, vi prøver med en `strings` på dd filen, og der kommer faktisk et password ut di gitt, base 64 encoded. 
 "Et kjempelangt passord som aldri vil kunne gjettes av NPST! :)"  
-**Flagg: PST{Et kjempelangt passord som aldri vil kunne gjettes av NPST! :)}**  
+
+Flagg: PST{Et kjempelangt passord som aldri vil kunne gjettes av NPST! :)}
+{:.note}
 
 Ett av bildene har nok en gul lapp med informasjon `VII TW ⚙️`.
 ### Alternativer (15)
@@ -960,8 +991,8 @@ echo -ne "_" | md5sum
 b14a7b8059d9c055954c92674ce60032
 ~~~
 
-**Flagg: PST{b14a7b8059d9c055954c92674ce60032}**
-
+Flagg: PST{b14a7b8059d9c055954c92674ce60032}
+{:.note}
 ### Feriebilder (20)
     Bildene ser jo ut til å være helt normale sydpolare feriebilder, 
     men vi vet jo at sydpolare spioner liker å gjemme data inni andre ting. 
@@ -977,8 +1008,9 @@ vedder på at det er en red herring. Rød er den iallefall, og md5 av filen er d
 $ md5sum måltid.png 
 07385aacc9264738cd7c32e76f3b81a5  måltid.png
 ~~~
-**Flagg: PST{07385aacc9264738cd7c32e76f3b81a5}**
 
+Flagg: PST{07385aacc9264738cd7c32e76f3b81a5}
+{:.note}
 ## Luke 16
     Opptrapping av fremmed rekruttering
     SPST har trappet opp sine forsøk på å rekruttere informanter i både NPST og i den nordpolare alvebefolkningen. 
@@ -1054,7 +1086,8 @@ puts("PST{f3ad88918fd18414cc773271f586"...PST{f3ad88918fd18414cc773271f586f6a9})
 Så... der var svaret ja. rimelig enkel begynner reverserings oppgave uten at man har behov for noe tungt ala [IDA](https://www.hex-rays.com/products/ida/), 
 [Radare2](https://rada.re/n/radare2.html), [Ghidra](https://ghidra-sre.org/) etc.  
 
-**Flagg: PST{f3ad88918fd18414cc773271f586f6a9}**
+Flagg: PST{f3ad88918fd18414cc773271f586f6a9}
+{:.note}
 
 ## Luke 18
     Mistenkelig ponni
@@ -1093,7 +1126,9 @@ Litt mere gjetting, så tipper jeg det står `PST{(md5 two time pad)}`. parentes
 echo -n 'two time pad' | md5sum
 4a0fc5f3c88874cab11c64e965dff58d  -
 ~~~
-**Flagg: PST{4a0fc5f3c88874cab11c64e965dff58d}**
+
+Flagg: PST{4a0fc5f3c88874cab11c64e965dff58d}
+{:.note}
 
 ## Luke 20 - Mystisk kort (5)
     Mystisk kort
@@ -1116,10 +1151,13 @@ gøy informasjon på [The virtual keypunch](https://www.masswerk.at/keypunch/), 
 hvor vi kan finne IBM/360 Column Binary Format. Jeg finner ingen online tools for dette (er jo gammelt),
 så jeg skriver en dekoder basert på informasjonen over og får ut `MD5(IBM 029+IBM/S60)`. Tipper S er feil og at det skal stå
 `MD5(IBM 029+IBM/360)`, som gir oss korrekt flagg.  
-**Flagg: PST{8dc9112fecac5e5d50eaf14e0fff2440}**
 
-Kode:
+Flagg: PST{8dc9112fecac5e5d50eaf14e0fff2440}
+{:.note}
+
+
 ~~~python
+# file: "solver.py"
 input = '1020 2020 0010 2012 2001 2200 1020 0000 0800 0200 0001 200A 2001 2200 1020 0C00 0300 0008 0800 1012'
 # split into blocks
 blocks = input.split(' ')
@@ -1289,10 +1327,13 @@ Javel, et nytt kryptosystem. Skal vi se hva vi har å jobbe med:
 AES-256 GCM, med en kryptert melding, tilgjengelig nonce, tilgjengelig tag og tilgjengelig key. Pluss en tag, uncertain_bits_count: 2.
 En slurve-tabbe fører her til at jeg bruker veldig mye tid på å bytte ut bytes isteden for bits.
 Så snart jeg fikk et hint fra Roy Solberg, så var denne raskt i boks ved å flippe bits i nøkkelen.   
-**Flagg: PST{7e7343c9cbe6114f8fd312490816387d}**
 
-Kode:
+Flagg: PST{7e7343c9cbe6114f8fd312490816387d}
+{:.note}
+
+
 ~~~python
+# file: "solver.py"
 from Crypto.Cipher import AES
 from bitarray import bitarray
 
@@ -1431,7 +1472,9 @@ Her har vi altså en kampanjeside. En rask titt på robots.txt gir oss:
     
 `https://spst.no/temmelig-hemmelig/` gir oss flagget direkte på siden.   
 
-**Flagg: PST{fc35fdc70d5fc69d269883a822c7a53e}**
+
+Flagg: PST{fc35fdc70d5fc69d269883a822c7a53e}
+{:.note}
 
 ### Kildekode (15)
 Joda, source koden til websiden inneholder en skjult tag:
@@ -1448,7 +1491,10 @@ inn korrekt morsekode på denne siden får vi:
     Alt ligger i vedlagt bilde.
 
 Flagget ligger bokstavelig talt i alt-tag til bildet.  
-**Flagg: PST{f2e0e89f59722af1f388529720b9db03}**
+
+
+Flagg: PST{f2e0e89f59722af1f388529720b9db03}
+{:.note}
 
 Bildet er også av en gul lapp med teksten `CO NG RA TS`. I tillegg ser det ut til at det er noen spesielle kabler i bildet, 
 sannsynligvis [ENIGMA](https://en.wikipedia.org/wiki/Enigma_machine) kabler (du har vel sett [The Imitation Game](https://en.wikipedia.org/wiki/The_Imitation_Game)?).
@@ -1495,10 +1541,12 @@ det ser ut til at tallene opptrer i grupper på 3 og 3. UTF-8/Unicode er det ikk
 kan jeg se at det er kun 4 unike grupperinger. Jeg forsøker base 4 på de tre første gruppene, og får PST som resultat. 
 Løsningen er altså base4 enkodet, erstattet med en gruppering på 3 bytes og printet ut.
 Ved å reversere dette finner vi det siste flagget.  
-**Flagg: PST{67b8601a11e47a9ee3bf08ddfd0b79ba}**
 
-Kode:
+Flagg: PST{67b8601a11e47a9ee3bf08ddfd0b79ba}
+{:.note}
+
 ~~~python
+# file: "solver.py"
 import string
 from PIL import Image
 import numpy as np
@@ -1632,8 +1680,9 @@ Her finner jeg egentlig ikke ut av så mye, men etter litt konferering med Roy S
 å løse denne på, det er masse hint til finn, og PST hadde kun tre annonser ute denne dagen, så det var bare å prøve tittelen
 på alle tre, så kom man fram til riktig flagg.
 Jeg ser i etterkant at jeg var inne på den påtenkte løsningen, [her er en beskrivelse](https://github.com/myrdyr/ctf-writeups/tree/master/npst#fragmentert-samtale).  
-**`PST{0844d949169d24679a1f0438f89c69e3}`**
 
+`PST{0844d949169d24679a1f0438f89c69e3}`
+{:.note}
 ### Mystisk julekort (5)
     Mystisk julekort
     
@@ -1716,8 +1765,8 @@ Klem inn denne verdien som cookie, og vi får et annet resultat.
     Arrgh! Vi gir opp for denne gang.
     https://npst.no/_6331fff126233c324c9f5fc49c49a8b6.html
 
-**Flagg: PST{82a1f79e6ce39ef16d0ef4ef1c1d2fcc}**
-
+Flagg: PST{82a1f79e6ce39ef16d0ef4ef1c1d2fcc}
+{:.note}
 ![star wars](/assets/img/blog/2020-npst/24-final-scene.png)
 
 ## Til slutt

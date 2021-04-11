@@ -10,6 +10,8 @@ description: >
   server for the watch to talk to.
 ---
 # Adidas Smart Run
+* this unordered seed list will be replaced by toc as unordered list
+{:toc}
 ![Adidas smart run outside stylistic](/assets/img/blog/adidas_smart_run_outside.jpg)
 ## Introduction
   For a very good review of the watch and all it has to offer, check out [DC Rainmakers blog entry](https://www.dcrainmaker.com/2013/12/adidas-smart-review.html).
