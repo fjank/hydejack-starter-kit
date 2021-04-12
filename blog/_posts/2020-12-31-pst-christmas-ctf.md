@@ -6,7 +6,7 @@ description: >
   NPST (Norpolar Sikkerhetstjeneste), som hadde en jobbannonse etter midlertidig stilling som snikende alvebetjent.
   Dette er en gjennomgang av julekalenderen som var en full CTF. 
 ---
-# NPST utlyser en midlertidig stilling som snikende alvebetjent
+# 2020 - NPST utlyser en midlertidig stilling som snikende alvebetjent
 * this unordered seed list will be replaced by toc as unordered list
 {:toc}
 Denne gangen hadde de introdusert DASS - Digitale Arkiv- og SaksbehandlingsSystem. 🚽
