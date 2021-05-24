@@ -233,20 +233,6 @@ PST{879502f267ce7b9913c1d1cf0acaf045}
 {:.note}
 
 
-## Luke template
-    desc
-
-forklaring
-
-~~~python
-kode
-~~~
-
-~~~bash
-run
-~~~
-
-🏴‍☠️ `flagg`
-{:.note}
+Resten av lukene vil bli lagt til etterhvert som jeg gidder å skrive, jeg var ikke så flink til å notere underveis. 😇
 
 🙌🙌 Takk for at du tok deg tid til å lese alt, trykk på recommend og legg inn en kommentar! 🙌🙌
