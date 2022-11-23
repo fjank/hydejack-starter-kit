@@ -519,7 +519,7 @@ Flagg: PST{b30b4add25b97721ebf0e7ad2eb26eb9}
 
 ## Luke 8
 ### 8. desember (10)
-![strava.png](/assets/img/blog/2020-npst/8-strava.png)
+![strava.webp](/assets/img/blog/2020-npst/8-strava.webp)
     
     Lokalisering av isbjørn
 

@@ -246,7 +246,7 @@ så får vi resultatet: ORDETDULETERETTERERTAPDANCE, altså TAP DANCE.
 ### Lett - runer
     Her får vi presentert et bilde an noe som ser ut som runer.
 
-![runer](/assets/img/blog/2020-etjenesten/runer.png)
+![runer.webp](/assets/img/blog/2020-etjenesten/runer.webp)
 
 Ved å lese litt om runer og futhark, så kan man oversette runene til latinsk alfabet, og vi får dette resultatet:
     
