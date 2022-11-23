@@ -47,7 +47,7 @@ print(rotall('RUV{JgkJqPåGtFgvLwnKilgp}', -2))
 ## Luke 2 🏴‍☠️ Flagg
     Vi får beskjed om å se på en mid fil som er i en zip fil.
 
-Mid filen gir ikke så mye mening hvis man hører på den. [pen_gwyn_greatest_hits.mid](assets/files/npst-2020/pen_gwyn_greatest_hits.mid)
+Mid filen gir ikke så mye mening hvis man hører på den. [pen_gwyn_greatest_hits.mid](/assets/files/npst-2020/pen_gwyn_greatest_hits.mid)
 Ved å se på notene, og gjøre om notene til bokstaver, så får man ut en tekststreng, som inneholder flagget.
 
 ~~~python
@@ -132,7 +132,7 @@ EGG{MeasureOnceCutTwice}
     📎 filer.zip
 
 
-Etter å ha kikket igjennom innholdet i [filer.zip](assets/files/npst-2020/filer.zip), kom jeg fram til at det var fint å reimplementere denne utregningen i python.
+Etter å ha kikket igjennom innholdet i [filer.zip](/assets/files/npst-2020/filer.zip), kom jeg fram til at det var fint å reimplementere denne utregningen i python.
 
 ~~~python
 # file: "solution-4.py"
@@ -188,7 +188,7 @@ PST{999159}
 ## Luke 5 🏴‍☠️ Flagg
     Vi får en indikasjon på at det er noe galt, og får en csv log for inspeksjon.
 
-[log.csv](assets/files/npst-2020/log.csv) har haugevis med linjer, så jeg brukte python for å explore og finne ut særegenheter. Navnet på Julenissen var feilstavet på en av logglinjene.
+[log.csv](/assets/files/npst-2020/log.csv) har haugevis med linjer, så jeg brukte python for å explore og finne ut særegenheter. Navnet på Julenissen var feilstavet på en av logglinjene.
 
 ~~~python
 # file: "solution-5.py"
